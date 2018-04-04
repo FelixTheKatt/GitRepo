@@ -1,0 +1,57 @@
+﻿<Window x:Class="Agenda.Windows.Register.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Agenda.Windows.Register"
+        mc:Ignorable="d"
+        Title="RegisterWindow" Height="350" Width="525"
+        DataContext="{Binding Source={StaticResource RegisterViewModel}}"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Name="titleGrid" Grid.Row="0" Background="{StaticResource Title}">
+            <Label Name="titleLabel" Content="Registration"  Style="{StaticResource LabelMainTitle}" />
+        </Grid>
+
+        <Grid Name="registrationGrid" Grid.Row="1" Background="{StaticResource default}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            
+            <!--In the binding of the textbox, (text="{Binding Path=... , /!\ UpdateSourceTrigger=PropertyChanged is used to update its content in real time /!\}")-->
+            <!--We needed this to update the confirm button in real time, see "RegisterConfirmCommand" in "RegisterViewModel" for more details on the CanExecute-->
+            <Label Name="pseudoLabel"  Content="PSEUDO  ! : " Style="{StaticResource defaultLabel}" ></Label>
+            <Label Name="pseudoWarningLabel" Grid.Column="1" Style="{StaticResource warningLabel}" Content="{Binding Path=WarningPseudo, UpdateSourceTrigger=PropertyChanged}" ></Label>
+            <TextBox Name="pseudoTextbox" Grid.Column="1" Style="{StaticResource DefaultTextBox}" Text="{Binding Path=Pseudo, UpdateSourceTrigger=PropertyChanged}"/>
+            
+            <!--"UpdateSourceTrigger" isn't needed, the real time check is already done by the passwordbox (I think)-->
+            <Label Name="passwordLabel" Grid.Row="1"  Content="Password   : " Style="{StaticResource defaultLabel}" ></Label>
+            <Label Name="passwordWarningLabel" Grid.Row="1" Grid.Column="1" Style="{StaticResource warningLabel}" Content="{Binding Path=WarningPassword, UpdateSourceTrigger=PropertyChanged}" ></Label>
+            <PasswordBox Name="passwordTextbox" Grid.Row="1" Grid.Column="1"  Style="{StaticResource DefaultPasswordBox}" PasswordChanged="PasswordBox_PasswordChanged" ></PasswordBox>
+
+            <Label Name="emailLabel" Grid.Row="2" Content="Email   : " Style="{StaticResource defaultLabel}"></Label>
+            <Label Name="emailWarningLabel" Grid.Row="2" Grid.Column="1" Style="{StaticResource warningLabel}" Content="{Binding Path=WarningEmail, UpdateSourceTrigger=PropertyChanged}" ></Label>
+            <TextBox Name="emailTextbox" Grid.Row="2" Grid.Column="1" Style="{StaticResource DefaultTextBox}" Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+            <Label Name="departementLabel" Grid.Row="3" Content="Departement   : " Style="{StaticResource defaultLabel}"></Label>
+            <ComboBox Name="departementTextbox" Grid.Row="3" Grid.Column="1" Height="50" Width="150" HorizontalAlignment="Right" ItemsSource="{Binding Path=AllDepartement}" SelectedItem="{Binding Path=SelectedDepartement}" DisplayMemberPath="Name"/>
+
+            <Button Name="Confirm" Grid.Row="4"  Content="Confirm" Style="{StaticResource ValiderStyle}" Command="{Binding RegistrationConfirmCommand}" ></Button>
+            <Button Name="Cancel" Grid.Row="4" Grid.Column="1"  Content="Cancel" Style="{StaticResource WarningStyle}" Command="{Binding CancelCommand}"></Button>
+        </Grid>
+    </Grid>
+</Window>

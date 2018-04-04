@@ -1,0 +1,31 @@
+﻿<Window x:Class="Agenda.Windows.Group.GroupComboBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Agenda.Windows.Group"
+        mc:Ignorable="d"
+        Title="GroupComboBox" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <TextBlock Grid.Row="0" Text="{Binding Concatenation}" FontSize="30" TextBlock.TextAlignment="Left" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" Margin="0,0,0,0"></TextBlock>
+        </Grid>
+        <ComboBox Grid.Row="1" ItemsSource="{Binding AllGroup}" SelectedItem="{Binding SelectedGroup}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" DataContext="{Binding DataContext}">
+                        <Rectangle Fill="{Binding GroupColor}" Width="16" Height="16" Margin="0,2,5,2"/>
+                        <TextBlock Text="{Binding Name}" FontSize="15"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button Grid.Row="2" Content="valider" Command ="{Binding ConfirmCommand}" Style="{StaticResource ValiderStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Left"></Button>
+        <Button Grid.Row="2" Content="Cancel" Command ="{Binding CancelCommand}" Style="{StaticResource WarningStyle}" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Button>
+    </Grid>
+</Window>

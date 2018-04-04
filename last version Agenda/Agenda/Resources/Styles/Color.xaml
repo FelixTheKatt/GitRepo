@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Agenda.Resources.Styles">
+
+    <!--Background colors-->
+
+    <SolidColorBrush x:Key="Warning" Color="#FFB92A37" />
+    <SolidColorBrush x:Key="default" Color="#FF4F4FFF" />
+    <SolidColorBrush x:Key="Confirm" Color="#7F3DB067" />
+    <SolidColorBrush x:Key="Title" Color="#CCDCFF40" />
+    <SolidColorBrush x:Key="SelectedItem" Color="#CC00FFF3" />
+    <SolidColorBrush x:Key="DefaultSelectedItem" Color="#CC63C6FF" />
+    <SolidColorBrush x:Key="BlackTransparency50" Color="#CC02050A" />
+
+    <!--Font Color-->
+    <SolidColorBrush x:Key="TitleColor" Color="#CC000000"/>
+    <SolidColorBrush x:Key="FontColorDefault" Color="#FF060632"/>
+
+
+    <!--Test-->
+    <SolidColorBrush x:Key="Test" Color="#FF1E9113" />
+
+
+
+</ResourceDictionary>

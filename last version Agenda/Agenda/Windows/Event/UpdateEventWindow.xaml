@@ -1,0 +1,64 @@
+﻿<Window x:Class="Agenda.Windows.Event.UpdateEventWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Agenda.Windows.Event"
+        mc:Ignorable="d"
+        Title="UpdateEventWindow" Height="350" Width="525">
+    <Grid Background="{StaticResource DefaultSelectedItem}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" Background="{StaticResource Title}">
+            <Label Name="EventTitle" Content="Event update" HorizontalAlignment="Center"  Style="{StaticResource LabelMainTitle}"></Label>
+        </Grid>
+        <Label Name="labelEventName" Grid.Row="1" Grid.Column="0" Content="NAME" Style="{StaticResource defaultLabel}"></Label>
+        <Label Name="CheckName" Grid.Row="1" Grid.Column="1" Content="{Binding Path=WarningEventName, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource warningLabel}" VerticalAlignment="Top" />
+        <TextBox Name="InputEventName" Grid.Row="1" Grid.Column="1" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom"></TextBox>
+        <Label Name="labelEventDate" Grid.Row="2" Grid.Column="0" Content="DATE" Style="{StaticResource defaultLabel}"></Label>
+        <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" ItemsSource="{Binding YearsList}" SelectedItem="{Binding DateYear}" Style="{StaticResource DefaultComboBox}"/>
+
+        <ComboBox  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" ItemsSource="{Binding MonthsList}" SelectedItem="{Binding DateMonth}" Style="{StaticResource DefaultComboBox}">
+
+        </ComboBox>
+        <ComboBox  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" ItemsSource="{Binding DaysList}" SelectedItem="{Binding DateDay}" Style="{StaticResource DefaultComboBox}">
+
+        </ComboBox>
+        <Label Name="labelEventTime" Grid.Row="3" Grid.Column="0" Content="Time" HorizontalAlignment="Left" Style="{StaticResource defaultLabel}" />
+        <Label Name="LabelQuestionTime" Grid.Row="3" Grid.Column="0" Content="Specify an hour ?" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="12"/>
+        <CheckBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding CheckedTime}" VerticalAlignment="Center"/>
+        <Label Grid.Row="3" Grid.Column="1" Content="{Binding Path=WarningTime, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource warningLabel}" Foreground="{Binding Path=TimeLabelColor, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"  />
+        <ComboBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" IsEnabled="{Binding CheckedTime}" ItemsSource="{Binding HoursList}" SelectedItem="{Binding Path=TimeHours}" Style="{StaticResource DefaultComboBox}" VerticalAlignment="Bottom"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" IsEnabled="{Binding CheckedTime}" ItemsSource="{Binding MinutesList}" SelectedItem="{Binding Path=TimeMinutes}" Style="{StaticResource DefaultComboBox}" VerticalAlignment="Bottom"/>
+
+        <Label Name="labelEventGroup" Grid.Row="4" Grid.Column="0" Content="Group" Style="{StaticResource defaultLabel}"/>
+        <Label Grid.Row="4" Grid.Column="1" Content="{Binding Path=WarningGroup, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource warningLabel}" VerticalAlignment="Top"  />
+        <ComboBox Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" ItemsSource="{Binding AllGroup}" SelectedItem="{Binding Path=SelectedGroup}" VerticalAlignment="Bottom" Style="{StaticResource DefaultComboBox}" Width="125">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" DataContext="{Binding DataContext}">
+                        <Rectangle Fill="{Binding GroupColor}" Width="16" Height="16" Margin="0,2,5,2"/>
+                        <TextBlock Text="{Binding Name}" FontSize="10"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Button Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Content="Add Group" Style="{StaticResource SmallDefaultStyle}"  VerticalAlignment="Bottom" Command="{Binding AddgroupCommand}"></Button>
+
+        <Button Name="AddEvent"  Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" Content="Update" Command="{Binding UpdateEventCommand}" Style="{StaticResource ValiderStyle}"></Button>
+        <Button Name="Cancel" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Content="Cancel" Command="{Binding CancelCommand}" Style="{StaticResource WarningStyle}"></Button>
+    </Grid>
+
+</Window>
+

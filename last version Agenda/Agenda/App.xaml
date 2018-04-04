@@ -1,0 +1,43 @@
+﻿
+<!-- /!\/!\  ATTENTION A L ORDRE DANS LES RESSOURCES DICTIONNARY SINON BREAKMODE DE MERDE  /!\/!\ -->
+
+
+
+<!--StartupUri="MainWindow.xaml"-->
+<!-- /!\/!\  STARTUPURI CHANGEE EN STARTUP POUR APPELER LA METHODE "APP_STARTUP" DU CODE BEHIND "APP.XAML.CS". CELA REMPLACE
+    LA LIGNE JUSTE AU DESSUS/!\/!\ -->
+
+
+<!--xmlns:vm_login = dossier "ViewModel" suivi du dossier "LoginFolder". Il s'agit des routes du view model-->
+
+<Application x:Class="Agenda.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Agenda"
+             xmlns:vm_login="clr-namespace:Agenda.ViewModel.LoginFolder"
+             xmlns:vm_register="clr-namespace:Agenda.ViewModel.RegisterFolder"
+             xmlns:vm_agenda="clr-namespace:Agenda.ViewModel.AgendaFolder"
+             Startup="App_Startup">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Color.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/TitleStyles.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/Buttun.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/TextBox.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/ComboBox.xaml"/>
+
+                <ResourceDictionary>
+                    <vm_login:LoginViewModel x:Key="LoginViewModel" />
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <vm_register:RegisterViewModel x:Key="RegisterViewModel" />
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <vm_agenda:AgendaViewModelCollection x:Key="AgendaViewModelCollection" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+          
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

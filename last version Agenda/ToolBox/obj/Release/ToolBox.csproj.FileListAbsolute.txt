@@ -1,0 +1,6 @@
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\ToolBox\bin\Release\ToolBox.dll
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\ToolBox\bin\Release\ToolBox.pdb
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\ToolBox\obj\Release\ToolBox.csprojResolveAssemblyReference.cache
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\ToolBox\obj\Release\ToolBox.csproj.CoreCompileInputs.cache
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\ToolBox\obj\Release\ToolBox.dll
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\ToolBox\obj\Release\ToolBox.pdb

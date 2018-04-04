@@ -1,0 +1,125 @@
+﻿<Window x:Class="Agenda.Windows.Agenda.AgendaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:local="clr-namespace:Agenda.Windows.Agenda"
+        xmlns:view="clr-namespace:Agenda.ViewModel.AgendaFolder"
+        mc:Ignorable="d"
+        Title="AgendaWindow"
+        WindowState="Maximized"       
+        DataContext="{Binding Source={StaticResource AgendaViewModelCollection}}"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Name="MyAgenda" Grid.Row="0" Grid.ColumnSpan="2"  Content="Agenda" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="{Binding Month}" HorizontalAlignment="Center"/>
+            <Label Grid.Row="1" Grid.Column="1" Content="{Binding Year}" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" x:Name="Gauche"  HorizontalAlignment="Left" Command="{Binding PreviousCommand}"  Background="Transparent">
+                <!-- Source="/<assembly name>;component/image path from root "-->
+                <Image Source="/Agenda;component/Resources/SweetImage/previous.png" Height="100" Width="100" />
+            </Button>
+            <Button Name="AddEventButton" Content="Add Event" HorizontalAlignment="Right" VerticalAlignment="Top" Command="{Binding AddEventCommand}"/>
+            <Button Name="GroupButton" Content="Add Group" HorizontalAlignment="Right" VerticalAlignment="Center" Command="{Binding AddgroupCommand}"/>
+            <Button Name="GroupView" Content="Manage Group" HorizontalAlignment="Right" VerticalAlignment="Bottom" Command="{Binding ManageGroupCommand}"/>
+            <ItemsControl Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" ItemsSource="{Binding GroupDatacontexts}" >
+                <ItemsControl.ItemsPanel >
+                    <ItemsPanelTemplate >
+                        <UniformGrid Columns="2" Rows="2">
+                        </UniformGrid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Name}" Command="{Binding ViewDetailsCommand}"  Background="{Binding GroupColor}"></Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Button Grid.Column="3" x:Name="Droit"  HorizontalAlignment="Right" Command="{Binding NextCommand}"  Background="Transparent">
+                <!-- Source="/<assembly name>;component/image path from root "-->
+                <Image Source="/Agenda;component/Resources/SweetImage/go-arrow-next.png" Height="100" Width="100" />
+            </Button>
+        </Grid>
+
+
+        <!-- create a Calendar-->
+        <ItemsControl Grid.Row="2" ItemsSource="{Binding Items}" >
+            <ItemsControl.ItemsPanel >
+                <ItemsPanelTemplate >
+                    <UniformGrid Columns="7" Rows="6">
+                    </UniformGrid>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                        <!--We need a DataContext to bind the grid to each customDay-->
+                        <Grid Name="DayGrid"  DataContext="{Binding CustomDayDataContext}" Background="White" PreviewMouseLeftButtonDown="PreviewMouseLeftButtonDown" >
+                        <Border BorderThickness="3" BorderBrush="{Binding CustomBackgroundColor}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="3*"/>
+                                </Grid.RowDefinitions>
+                            <ListView Grid.Row="1" ItemsSource="{Binding EventList}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel DataContext="{Binding DataContext}">
+                                                <DockPanel>
+                                                    <Button DockPanel.Dock="Right" Height="30" Width="30" Background="Transparent" Command="{Binding DeleteEventCommand}">
+                                                        <Image Source="/Agenda;component/Resources/SweetImage/cross.png" Height="25" Width="25"/>
+                                                    </Button>
+                                                    <Border  BorderBrush="{Binding GroupColorAVM}" BorderThickness="1" >
+                                                        <Label MouseDoubleClick="Label_MouseDoubleClick"  Content="{Binding Name}" Width="auto"></Label>
+                                                    </Border>
+                                                </DockPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                </ListView>
+                            <Label Content="{Binding DayInMonth}"  Grid.Row="0" FontSize="10"></Label>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Window>
+    
+<!--<i:Interaction.Triggers>
+    <view:ClickTriggerGrid>
+
+        <ei:CallMethodAction MethodName="test" TargetObject="{ }"/>
+    </view:ClickTriggerGrid>
+</i:Interaction.Triggers>-->

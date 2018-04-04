@@ -1,0 +1,5 @@
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\ToolboxMvvm\bin\Release\ToolboxMvvm.dll
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\ToolboxMvvm\bin\Release\ToolboxMvvm.pdb
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\ToolboxMvvm\obj\Release\ToolboxMvvm.csproj.CoreCompileInputs.cache
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\ToolboxMvvm\obj\Release\ToolboxMvvm.dll
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\ToolboxMvvm\obj\Release\ToolboxMvvm.pdb

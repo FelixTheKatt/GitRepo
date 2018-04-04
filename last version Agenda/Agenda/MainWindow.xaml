@@ -1,0 +1,45 @@
+﻿<Window x:Class="Agenda.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Agenda"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525"
+        DataContext="{Binding Source={StaticResource LoginViewModel}}"
+>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Name="titleGrid" Background="{StaticResource Title}">
+            <Label Name="titleLabel"  Content="Bienvenue dans votre bel agenda"  Style="{StaticResource LabelMainTitle}"></Label>
+        </Grid>
+        <Grid Name="LogginGrid" Grid.Row="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Agenda;component/Resources/SweetImage/MainBackground.jpg" Stretch="UniformToFill"/>
+            </Grid.Background>
+            <Label Name="pseudoLabel" Content="PSEUDO  !   : " Style="{StaticResource defaultLabel}"  ></Label>
+            <Label Name="pseudoWarningLabel" Grid.ColumnSpan="2" Style="{StaticResource warningLabel}" Content="{Binding Warning}" ></Label>
+            <TextBox Name="pseudoTextbox" Grid.Column="1" Style="{StaticResource DefaultTextBox}" Text="{Binding Pseudo}"></TextBox>
+
+            <Label  Name="passwordLabel" Grid.Row="1"  Content="Password : " Style="{StaticResource defaultLabel}"></Label>
+            <!--<Label Name="passwordWarningLabel" Grid.Column="1" Grid.Row="1" Style="{StaticResource warningLabel}" ></Label>-->
+            <PasswordBox  Name="passwordTextbox" Grid.Row="1" Grid.Column="1" Style="{StaticResource DefaultPasswordBox}" PasswordChanged="PasswordBox_PasswordChanged"  ></PasswordBox>
+
+            <Button Name="loggin" Grid.Row="2" Content="Loggin"  Style="{StaticResource ValiderStyle}" Command="{Binding LoginCommand}"></Button>
+            <Button Name="Register" Grid.Row="2" Grid.Column="1" Content="Register" Style="{StaticResource ValiderStyle}" Command="{Binding RegisterCommand}"  ></Button>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,10 @@
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\Dal\bin\Release\Dal.dll
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\Dal\bin\Release\Dal.pdb
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\Dal\bin\Release\ToolBox.dll
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\Dal\bin\Release\ToolboxMvvm.dll
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\Dal\bin\Release\ToolboxMvvm.pdb
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\Dal\bin\Release\ToolBox.pdb
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\Dal\obj\Release\Dal.csprojResolveAssemblyReference.cache
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\Dal\obj\Release\Dal.csproj.CoreCompileInputs.cache
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\Dal\obj\Release\Dal.dll
+C:\Users\felix\Documents\Visual Studio 2017\projet\Agenda\Dal\obj\Release\Dal.pdb
