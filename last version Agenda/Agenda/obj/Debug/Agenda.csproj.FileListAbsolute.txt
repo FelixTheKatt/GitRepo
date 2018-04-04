@@ -293,3 +293,5 @@ C:\Users\felix\Desktop\last version Agenda\Agenda\obj\Debug\Agenda.csproj.Genera
 C:\Users\felix\Desktop\last version Agenda\Agenda\obj\Debug\Agenda.csproj.CoreCompileInputs.cache
 C:\Users\felix\Desktop\last version Agenda\Agenda\obj\Debug\Agenda.exe
 C:\Users\felix\Desktop\last version Agenda\Agenda\obj\Debug\Agenda.pdb
+C:\Users\felix\Desktop\last version Agenda\Agenda\bin\Debug\Agenda.exe.CodeAnalysisLog.xml
+C:\Users\felix\Desktop\last version Agenda\Agenda\bin\Debug\Agenda.exe.lastcodeanalysissucceeded

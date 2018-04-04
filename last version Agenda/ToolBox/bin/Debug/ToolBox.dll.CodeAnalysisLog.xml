@@ -2,7 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\community\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
 <FxCopReport Version="15.0">
  <Targets>
-  <Target Name="C:\Users\felix\Desktop\Current Agenda - Copie\ToolBox\bin\Debug\ToolBox.dll">
+  <Target Name="C:\Users\felix\Desktop\last version Agenda\ToolBox\bin\Debug\ToolBox.dll">
    <Modules>
     <Module Name="toolbox.dll">
      <Namespaces>
@@ -10,15 +10,15 @@
        <Types>
         <Type Name="Connection" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-03-31 08:37:08Z" FixCategory="DependsOnFix">
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2018-04-04 16:32:16Z" FixCategory="DependsOnFix">
            <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'Connection' because it creates members of the following IDisposable types: 'SqlConnection'. If 'Connection' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
           </Message>
          </Messages>
          <Members>
           <Member Name="#CreateSqlCommand(ToolBox.Connections.Database.Command)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-03-31 08:37:08Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\felix\Desktop\Current Agenda - Copie\ToolBox\Connections\Database" File="Connection.cs" Line="31">The query string passed to 'SqlCommand.CommandText.set(string)' in 'Connection.CreateSqlCommand(Command)' could contain the following variables 'command.Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2018-04-04 16:32:16Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Users\felix\Desktop\last version Agenda\ToolBox\Connections\Database" File="Connection.cs" Line="31">The query string passed to 'SqlCommand.CommandText.set(string)' in 'Connection.CreateSqlCommand(Command)' could contain the following variables 'command.Query'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
             </Message>
            </Messages>
           </Member>

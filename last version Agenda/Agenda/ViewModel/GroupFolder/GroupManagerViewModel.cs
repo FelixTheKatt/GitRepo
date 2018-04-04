@@ -120,9 +120,30 @@ namespace Agenda.ViewModel.GroupFolder
 
             foreach (ColorEventDataContext item in oldEvents)
             {
-                item.EventView.GroupId = SelectedGroup.Group.GroupID;
 
-                EventRepo.Instance.Update(item.EventView);
+                Event newEvent = new Event()
+                {
+                    Name = item.EventView.Name,
+                    Date = new DateTime(item.EventView.Date.Year, item.EventView.Date.Month, item.EventView.Date.Day),
+
+                    GroupId = selectedGroup.Group.GroupID
+
+                };
+                if (item.EventView.Time == null)
+                {
+                    newEvent.Time = null;
+                }
+                else
+                {
+
+                    DateTime old = (DateTime)item.EventView.Time;
+                    DateTime dt = new DateTime(1800, 1, 1, (int)old.Hour, (int)old.Minute, 0);
+                    newEvent.Time = dt;
+                }
+
+                newEvent.EventId = item.EventView.EventId;
+
+                EventRepo.Instance.Update(newEvent);
 
                 List<CustomMonth> cmList = AgendaViewModelCollection.Instance.CustomMonthList.Where(x => x.Days.Any(y => y.DayInMonth == item.EventView.Date.Day && y.Month == item.EventView.Date.Month)).ToList();
                 masterCmList.AddRange(cmList);
@@ -130,7 +151,9 @@ namespace Agenda.ViewModel.GroupFolder
 
             masterCmList = masterCmList.Distinct().ToList();
 
-            GroupRepo.Instance.Delete(OldGroup.Group.GroupID);           
+            GroupRepo.Instance.Delete(OldGroup.Group.GroupID);
+
+            AgendaViewModelCollection.Instance.LoadEvent?.Invoke(this, EventArgs.Empty);
 
             foreach (CustomMonth cm in masterCmList)
             {

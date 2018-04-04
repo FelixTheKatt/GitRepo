@@ -18,3 +18,11 @@ C:\Users\felix\Desktop\Current Agenda - Copie\ToolboxMvvm\obj\Debug\ToolboxMvvm.
 C:\Users\felix\Desktop\Current Agenda - Copie\ToolboxMvvm\obj\Debug\ToolboxMvvm.pdb
 C:\Users\felix\Desktop\Current Agenda - Copie\ToolboxMvvm\bin\Debug\ToolboxMvvm.dll.CodeAnalysisLog.xml
 C:\Users\felix\Desktop\Current Agenda - Copie\ToolboxMvvm\bin\Debug\ToolboxMvvm.dll.lastcodeanalysissucceeded
+C:\Users\felix\Desktop\last version Agenda\ToolboxMvvm\bin\Debug\ToolboxMvvm.dll
+C:\Users\felix\Desktop\last version Agenda\ToolboxMvvm\bin\Debug\ToolboxMvvm.pdb
+C:\Users\felix\Desktop\last version Agenda\ToolboxMvvm\obj\Debug\ToolboxMvvm.csprojResolveAssemblyReference.cache
+C:\Users\felix\Desktop\last version Agenda\ToolboxMvvm\obj\Debug\ToolboxMvvm.csproj.CoreCompileInputs.cache
+C:\Users\felix\Desktop\last version Agenda\ToolboxMvvm\obj\Debug\ToolboxMvvm.dll
+C:\Users\felix\Desktop\last version Agenda\ToolboxMvvm\obj\Debug\ToolboxMvvm.pdb
+C:\Users\felix\Desktop\last version Agenda\ToolboxMvvm\bin\Debug\ToolboxMvvm.dll.CodeAnalysisLog.xml
+C:\Users\felix\Desktop\last version Agenda\ToolboxMvvm\bin\Debug\ToolboxMvvm.dll.lastcodeanalysissucceeded

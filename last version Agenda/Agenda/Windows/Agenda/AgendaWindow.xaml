@@ -30,6 +30,7 @@
             <Label Name="MyAgenda" Grid.Row="0" Grid.ColumnSpan="2"  Content="Agenda" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Grid.Row="1" Grid.Column="0" Content="{Binding Month}" HorizontalAlignment="Center"/>
             <Label Grid.Row="1" Grid.Column="1" Content="{Binding Year}" HorizontalAlignment="Center"/>
+            <Button Grid.Row="0" Grid.Column="1"  />
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -38,7 +39,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
+            
             <Button Grid.Column="0" x:Name="Gauche"  HorizontalAlignment="Left" Command="{Binding PreviousCommand}"  Background="Transparent">
                 <!-- Source="/<assembly name>;component/image path from root "-->
                 <Image Source="/Agenda;component/Resources/SweetImage/previous.png" Height="100" Width="100" />
