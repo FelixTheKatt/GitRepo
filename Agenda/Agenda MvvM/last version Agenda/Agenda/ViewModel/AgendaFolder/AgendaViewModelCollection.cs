@@ -2,9 +2,11 @@
 using Agenda.ViewModel.AgendaFolder.Calendar;
 using Agenda.ViewModel.AgendaFolder.Calendar_Model;
 using Agenda.ViewModel.EventFolder;
+using Agenda.ViewModel.FriendsFolder;
 using Agenda.ViewModel.GroupFolder;
 using Agenda.ViewModel.SessionFolder;
 using Agenda.Windows.Event;
+using Agenda.Windows.Friends;
 using Agenda.Windows.Group;
 using Dal.Model;
 using Dal.Repository;
@@ -304,7 +306,28 @@ namespace Agenda.ViewModel.AgendaFolder
             window.ShowDialog();
         }
 
+        private ICommand friendsCommand;
 
+        public ICommand FriendsCommand
+        {
+            get
+            {
+                return friendsCommand = friendsCommand ?? new CommandBase(Friends);
+            }
+        }
+
+        private void Friends()
+        {
+            FriendViewModel fvm = new FriendViewModel();
+
+            FriendsWindow window = new FriendsWindow
+            {
+                DataContext = fvm
+            };
+                    
+
+            window.ShowDialog();
+        }
         private void LoadRepo()
         {
             EventList.Clear();

@@ -42,3 +42,14 @@ C:\Users\felix\Desktop\last version Agenda\Dal\obj\Debug\Dal.csprojResolveAssemb
 C:\Users\felix\Desktop\last version Agenda\Dal\obj\Debug\Dal.csproj.CoreCompileInputs.cache
 C:\Users\felix\Desktop\last version Agenda\Dal\obj\Debug\Dal.dll
 C:\Users\felix\Desktop\last version Agenda\Dal\obj\Debug\Dal.pdb
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\Dal\obj\Debug\Dal.csprojResolveAssemblyReference.cache
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\Dal\obj\Debug\Dal.csproj.CoreCompileInputs.cache
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\Dal\obj\Debug\Dal.dll
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\Dal\obj\Debug\Dal.pdb
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\Dal\bin\Debug\Dal.dll
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\Dal\bin\Debug\Dal.pdb
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\Dal\bin\Debug\ToolBox.dll
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\Dal\bin\Debug\ToolboxMvvm.dll
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\Dal\bin\Debug\ToolboxMvvm.pdb
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\Dal\bin\Debug\ToolBox.pdb
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\Dal\obj\Debug\Dal.csproj.CopyComplete

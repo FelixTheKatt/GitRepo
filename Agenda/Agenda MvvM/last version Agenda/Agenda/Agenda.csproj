@@ -72,6 +72,8 @@
     <Compile Include="ViewModel\AgendaFolder\GroupDataContext.cs" />
     <Compile Include="ViewModel\EventFolder\EventViewModel.cs" />
     <Compile Include="ViewModel\EventFolder\GroupDataContext.cs" />
+    <Compile Include="ViewModel\FriendsFolder\FriendsViewModelDataContext.cs" />
+    <Compile Include="ViewModel\FriendsFolder\FriendViewModel.cs" />
     <Compile Include="ViewModel\GroupFolder\ColorDataContext.cs" />
     <Compile Include="ViewModel\GroupFolder\EventDetails.cs" />
     <Compile Include="ViewModel\GroupFolder\GroupDetailsViewModel.cs" />
@@ -89,6 +91,9 @@
     </Compile>
     <Compile Include="Windows\Event\UpdateEventWindow.xaml.cs">
       <DependentUpon>UpdateEventWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Friends\FriendsWindow.xaml.cs">
+      <DependentUpon>FriendsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Group\GroupComboBox.xaml.cs">
       <DependentUpon>GroupComboBox.xaml</DependentUpon>
@@ -146,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Event\UpdateEventWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Friends\FriendsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,8 +225,6 @@
   <ItemGroup>
     <Resource Include="Resources\SweetImage\MainBackground.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\FriendsFolder\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

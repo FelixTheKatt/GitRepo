@@ -1,0 +1,72 @@
+﻿<Window x:Class="Agenda.Windows.Friends.FriendsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Agenda.Windows.Friends"
+        mc:Ignorable="d"
+        Title="FriendsWindow" Height="450" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition />
+            <RowDefinition Height="20"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="{StaticResource Title}">
+            <Label  Style="{StaticResource LabelMainTitle}" Content="Friends" />
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Text="{Binding Search}"/>
+            <Button Content="Search" Grid.Column="1" Command="{Binding SearchCommand}"/>
+        </Grid>
+        <ListView Grid.Row="2" ItemsSource="{Binding MyFriends}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Pseudo" Width="100" DisplayMemberBinding="{Binding Pseudo}"/>
+                    <GridViewColumn Header="Departement"  Width="100" DisplayMemberBinding="{Binding Departement}"/>
+                    <GridViewColumn Header="Email"  Width="100" DisplayMemberBinding="{Binding Email}"/>
+                    <GridViewColumn Header="Action" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding ButtonText}" Command="{Binding AddOrDeleteCommand}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Refresh" Grid.Row="3" Command="{Binding RefreshCommand}"/>
+        <ListView Grid.Row="4" ItemsSource="{Binding FutureFriends}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Pseudo" Width="100" DisplayMemberBinding="{Binding Pseudo}"/>
+                    <GridViewColumn Header="Departement"  Width="100" DisplayMemberBinding="{Binding Departement}"/>
+                    <GridViewColumn Header="Email"  Width="100" DisplayMemberBinding="{Binding Email}"/>
+                    <GridViewColumn  Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="ok" Command="{Binding AcceptFriendsCommand}"/>
+                                
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn  Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Pas ok"/>
+
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

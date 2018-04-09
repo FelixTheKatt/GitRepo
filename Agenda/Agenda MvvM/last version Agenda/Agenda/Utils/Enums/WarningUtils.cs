@@ -16,7 +16,8 @@ namespace Agenda.Utils.Enums
              { "EmailInvalid", "This email is invalid" } ,
              { "Null", "This field is required" } ,
              { "DontExist" , "The pseudo or password is invalid" },
-             { "TimeUnchecked" , "Time won't be saved" }
+             { "TimeUnchecked" , "Time won't be saved" },
+             {"NoFind", "Nothing was Found :(" }
          };
 
     }

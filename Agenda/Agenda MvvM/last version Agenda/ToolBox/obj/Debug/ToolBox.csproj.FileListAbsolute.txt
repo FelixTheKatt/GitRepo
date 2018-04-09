@@ -31,3 +31,9 @@ C:\Users\felix\Desktop\last version Agenda\ToolBox\obj\Debug\ToolBox.dll
 C:\Users\felix\Desktop\last version Agenda\ToolBox\obj\Debug\ToolBox.pdb
 C:\Users\felix\Desktop\last version Agenda\ToolBox\bin\Debug\ToolBox.dll.CodeAnalysisLog.xml
 C:\Users\felix\Desktop\last version Agenda\ToolBox\bin\Debug\ToolBox.dll.lastcodeanalysissucceeded
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\ToolBox\bin\Debug\ToolBox.dll
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\ToolBox\bin\Debug\ToolBox.pdb
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\ToolBox\obj\Debug\ToolBox.csprojResolveAssemblyReference.cache
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\ToolBox\obj\Debug\ToolBox.csproj.CoreCompileInputs.cache
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\ToolBox\obj\Debug\ToolBox.dll
+C:\Users\felix\Documents\GitHub\AgendaMvvM\Agenda\Agenda MvvM\last version Agenda\ToolBox\obj\Debug\ToolBox.pdb
