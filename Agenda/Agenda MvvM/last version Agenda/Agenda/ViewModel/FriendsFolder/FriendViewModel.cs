@@ -6,9 +6,11 @@ using Dal.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using ToolboxMvvm.wpf;
 
@@ -17,18 +19,47 @@ namespace Agenda.ViewModel.FriendsFolder
     public class FriendViewModel : ViewModelCollectionBase<UserClient>
     {
 
+        #region Instance
+        public  FriendViewModel Instance
+        {
+            get
+            {
+                return this;
+            }
+        }
+        #endregion
 
-        //private UserClient selectedItem;
+        private EventHandler showInviteHandler;
 
-        //public UserClient SelectedItem
-        //{
-        //    get { return selectedItem; }
-        //    set
-        //    {
-        //        selectedItem = value;
-        //        RaisePropertyChanged(nameof(SelectedItem));
-        //    }
-        //}
+        public EventHandler ShowInviteHandler
+        {
+            get
+            {
+                if (showInviteHandler == null)
+                {
+                    showInviteHandler += (s, e) => RaisePropertyChanged(nameof(ShowInvitation));
+                }
+
+                return showInviteHandler;
+            }
+        }
+
+        private EventHandler updateFriendsList;
+
+        public EventHandler UpdateFriendsList
+        {
+            get
+            {
+              
+                if (updateFriendsList == null)
+                {
+                    updateFriendsList += (s, e) => GetFriends();
+                    updateFriendsList += (s, e) => GetFutureFriends();
+                }
+
+                return updateFriendsList;
+            }
+        }
 
         private List<FriendsViewModelDataContext> myFriends;
 
@@ -95,6 +126,24 @@ namespace Agenda.ViewModel.FriendsFolder
             }
         }
 
+        public Visibility ShowInvitation
+        {
+            get
+            {
+                List<Friends> friends = FriendsRepo.Instance.GetAll().Where(x => x.InvitationOnGoing && x.UserId2 == SessionFolder.SessionManager.CurrentUser.UserId).ToList();
+                if (friends.Count == 0)
+                {
+                   
+                    return Visibility.Collapsed;
+                    
+                }
+              
+                return Visibility.Visible;
+
+            }
+        }
+
+
         private ICommand refreshCommand;
         public ICommand RefreshCommand
         {
@@ -112,7 +161,7 @@ namespace Agenda.ViewModel.FriendsFolder
 
             List<FriendsViewModelDataContext> Temp = new List<FriendsViewModelDataContext>();
 
-            friends.ForEach(x => Temp.Add(new FriendsViewModelDataContext(UserService.Instance.GetOne(x.UserId2), false)));
+            friends.ForEach(x => Temp.Add(new FriendsViewModelDataContext(UserService.Instance.GetOne(x.UserId2), false, this)));
 
             myFriends = Temp;
             RaisePropertyChanged(nameof(MyFriends));
@@ -134,7 +183,8 @@ namespace Agenda.ViewModel.FriendsFolder
             List<UserClient> u = UserService.Instance.GetAll();
 
             List<FriendsViewModelDataContext> t = new List<FriendsViewModelDataContext>();
-            u.ForEach(x => t.Add(new FriendsViewModelDataContext(UserService.Instance.GetOne(x.UserId), true)));
+            u.ForEach(x => t.Add(new FriendsViewModelDataContext(UserService.Instance.GetOne(x.UserId), true, this)));
+            t.Remove(t.Where(x => x.User.UserId == SessionFolder.SessionManager.CurrentUser.UserId).FirstOrDefault());
 
             if (string.IsNullOrEmpty(Search))
             {               
@@ -155,7 +205,7 @@ namespace Agenda.ViewModel.FriendsFolder
 
             List<FriendsViewModelDataContext> Temp = new List<FriendsViewModelDataContext>();
 
-            friends.ForEach(x => Temp.Add(new FriendsViewModelDataContext(UserService.Instance.GetOne(x.UserId1), true)));
+            friends.ForEach(x => Temp.Add(new FriendsViewModelDataContext(UserService.Instance.GetOne(x.UserId1), true, this)));
 
             futureFriends = Temp;
             RaisePropertyChanged(nameof(FutureFriends));

@@ -3,9 +3,11 @@ using Dal.Model;
 using Dal.Repository;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using ToolboxMvvm.wpf;
 
@@ -14,7 +16,49 @@ namespace Agenda.ViewModel.FriendsFolder
     public class FriendsViewModelDataContext : ViewModelBase
     {
 
-        
+        #region Ne pas regarder
+        public Visibility ShowButton
+        {
+            get
+            {
+                if (!IsSearched)
+                    return Visibility.Visible;
+                else
+                {
+                    Friends f = FriendsRepo.Instance.GetAll().Where(x => x.UserId1 == SessionFolder.SessionManager.CurrentUser.UserId && x.UserId2 == User.UserId).FirstOrDefault();
+                    if (f == null)
+                        return Visibility.Visible;
+                    else
+                    {
+                        if (!f.IsFriend)
+                        {
+                            if (!f.InvitationOnGoing)
+                            {
+                                Friends f2 = FriendsRepo.Instance.GetAll().Where(x => x.UserId2 == SessionFolder.SessionManager.CurrentUser.UserId && x.UserId1 == User.UserId).FirstOrDefault();
+                                if (f2 != null)
+                                {
+                                    if (!f2.InvitationOnGoing)
+                                        return Visibility.Visible;
+                                    else
+                                        return Visibility.Collapsed;
+                                }
+                            }
+                            else
+                                return Visibility.Collapsed;
+                        }
+                        else
+                        {
+                            return Visibility.Collapsed;
+                        }
+                    }
+                }
+
+                //Shouldn't get here
+                return Visibility.Collapsed;
+            }
+        } 
+        #endregion
+
         private bool isSearched;
 
         public bool IsSearched
@@ -24,7 +68,7 @@ namespace Agenda.ViewModel.FriendsFolder
 
         public string ButtonText
         {
-            get { return isSearched ? "Send Invatation" : "Delete THIS MORRON" ; }
+            get { return isSearched ? "Send Invatation" : "Delete THIS MORRON"; }
 
         }
 
@@ -33,7 +77,7 @@ namespace Agenda.ViewModel.FriendsFolder
             get { return User.Pseudo; }
 
         }
-       
+
         public string Departement
         {
             get
@@ -47,23 +91,25 @@ namespace Agenda.ViewModel.FriendsFolder
         {
             get
             {
-                return  User.Email;
+                return User.Email;
 
             }
         }
 
         public FriendsViewModelDataContext() { }
 
-        public FriendsViewModelDataContext(UserClient u,bool isSearched)
+        public FriendsViewModelDataContext(UserClient u, bool isSearched, FriendViewModel fvm)
         {
             this.User = u;
             this.isSearched = isSearched;
+            Fvm = fvm;
         }
 
-        public FriendsViewModelDataContext DataContext { get =>  this; }
+        public FriendsViewModelDataContext DataContext { get => this; }
 
         public UserClient User { get; set; }
 
+        public FriendViewModel Fvm { get; set; }
 
         private ICommand addOrDeleteCommand;
         public ICommand AddOrDeleteCommand
@@ -73,14 +119,17 @@ namespace Agenda.ViewModel.FriendsFolder
                 if (isSearched)
                 {
                     return addOrDeleteCommand = addOrDeleteCommand ?? new CommandBase(AddFriends);
+
+
                 }
                 else
                 {
                     return addOrDeleteCommand = addOrDeleteCommand ?? new CommandBase(DeleteFriends);
                 }
-               
+
             }
         }
+
 
         private void DeleteFriends()
         {
@@ -100,6 +149,8 @@ namespace Agenda.ViewModel.FriendsFolder
 
                 FriendsRepo.Instance.Update(f);
             }
+            Fvm.UpdateFriendsList.Invoke(this, EventArgs.Empty);
+            
         }
 
         private void AddFriends()
@@ -108,10 +159,10 @@ namespace Agenda.ViewModel.FriendsFolder
 
             if (f == null)
             {
-                
-                f = new Friends() {UserId1= SessionFolder.SessionManager.CurrentUser.UserId, UserId2 = User.UserId , IsFriend = false, InvitationOnGoing = true };
+
+                f = new Friends() { UserId1 = SessionFolder.SessionManager.CurrentUser.UserId, UserId2 = User.UserId, IsFriend = false, InvitationOnGoing = true };
                 FriendsRepo.Instance.Insert(f);
-                
+
             }
 
             else
@@ -121,6 +172,7 @@ namespace Agenda.ViewModel.FriendsFolder
 
                 FriendsRepo.Instance.Update(f);
             }
+            Fvm.UpdateFriendsList.Invoke(this, EventArgs.Empty);
         }
 
 
@@ -133,7 +185,7 @@ namespace Agenda.ViewModel.FriendsFolder
             }
         }
 
-        private void AcceptFriends ()
+        private void AcceptFriends()
         {
             Friends f = FriendsRepo.Instance.GetAll().Where(x => x.UserId2 == SessionFolder.SessionManager.CurrentUser.UserId && x.UserId1 == User.UserId).FirstOrDefault();
 
@@ -141,7 +193,29 @@ namespace Agenda.ViewModel.FriendsFolder
             f.IsFriend = true;
 
             FriendsRepo.Instance.Update(f);
+            Fvm.UpdateFriendsList.Invoke(this, EventArgs.Empty);
+            Fvm.ShowInviteHandler.Invoke(this, EventArgs.Empty);
+        }
+        private ICommand refuseFriendsComand;
+        public ICommand RefuseFriendsComand
+        {
+            get
+            {
+                return refuseFriendsComand = refuseFriendsComand ?? new CommandBase(RefuseFriends);
+            }
         }
 
+        private void RefuseFriends()
+        {
+            Friends f = FriendsRepo.Instance.GetAll().Where(x => x.UserId2 == SessionFolder.SessionManager.CurrentUser.UserId && x.UserId1 == User.UserId).FirstOrDefault();
+
+            f.InvitationOnGoing = false;
+            f.IsFriend = false;
+
+            FriendsRepo.Instance.Update(f);
+            Fvm.UpdateFriendsList.Invoke(this, EventArgs.Empty);
+
+            Fvm.ShowInviteHandler.Invoke(this, EventArgs.Empty);
+        }
     }
 }
