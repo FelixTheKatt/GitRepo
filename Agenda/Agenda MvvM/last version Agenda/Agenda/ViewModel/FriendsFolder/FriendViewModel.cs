@@ -37,7 +37,7 @@ namespace Agenda.ViewModel.FriendsFolder
             {
                 if (showInviteHandler == null)
                 {
-                    showInviteHandler += (s, e) => RaisePropertyChanged(nameof(ShowInvitation));
+                    showInviteHandler += (s, e) => RaisePropertyChanged(nameof(NewInvitations));
                 }
 
                 return showInviteHandler;
@@ -126,23 +126,21 @@ namespace Agenda.ViewModel.FriendsFolder
             }
         }
 
-        public Visibility ShowInvitation
+        public int NewInvitations
         {
             get
             {
                 List<Friends> friends = FriendsRepo.Instance.GetAll().Where(x => x.InvitationOnGoing && x.UserId2 == SessionFolder.SessionManager.CurrentUser.UserId).ToList();
                 if (friends.Count == 0)
                 {
-                   
-                    return Visibility.Collapsed;
-                    
-                }
-              
-                return Visibility.Visible;
 
+                    return 0;
+
+                }
+
+                return 200;
             }
         }
-
 
         private ICommand refreshCommand;
         public ICommand RefreshCommand

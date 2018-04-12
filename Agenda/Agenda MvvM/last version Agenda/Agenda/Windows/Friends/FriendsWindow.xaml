@@ -12,7 +12,7 @@
             <RowDefinition Height="40"/>
             <RowDefinition />
             <RowDefinition Height="20"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="{Binding NewInvitations}"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="{StaticResource Title}">
             <Label  Style="{StaticResource LabelMainTitle}" Content="Friends" />
@@ -51,7 +51,7 @@
             <Grid Grid.Row="0" Background="{StaticResource Title}">
                 <Label Content="Invitations" HorizontalAlignment="Center"></Label>
             </Grid>
-            <ListView Grid.Row="1" ItemsSource="{Binding FutureFriends}" Visibility="{Binding ShowInvitation}" >
+            <ListView Grid.Row="1" ItemsSource="{Binding FutureFriends}">
                 <ListView.View>
                     <GridView >
                         <GridViewColumn Header="Pseudo" Width="100" DisplayMemberBinding="{Binding Pseudo}" />

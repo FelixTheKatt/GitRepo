@@ -25,7 +25,6 @@ namespace Agenda.Windows.Agenda
         public AgendaWindow()
         {
             InitializeComponent();    
-            
         }
         
         //ONLY on grid

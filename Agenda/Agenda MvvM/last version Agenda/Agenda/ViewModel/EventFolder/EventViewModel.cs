@@ -377,7 +377,7 @@ namespace Agenda.ViewModel.EventFolder
             {
                 Name = Name,
                 Date = new DateTime(DateYear,DateMonth,DateDay),
-                
+                PublisherId = SessionManager.CurrentUser.UserId,
                 GroupId = selectedGroup.Group.GroupID
 
             };
@@ -390,6 +390,7 @@ namespace Agenda.ViewModel.EventFolder
                 DateTime dt = new DateTime(1800,1,1,(int)TimeHours,(int)TimeMinutes,0);
                 newEvent.Time = dt;
             }
+            
             newEvent.EventId = EventRepo.Instance.Insert(newEvent);
 
             AgendaViewModelCollection.Instance.LoadEvent.Invoke(this,EventArgs.Empty);
@@ -459,7 +460,7 @@ namespace Agenda.ViewModel.EventFolder
                 EventId = this.EventId,
                 Name = Name,
                 Date = new DateTime(DateYear, DateMonth, DateDay),
-                
+                PublisherId = SessionManager.CurrentUser.UserId,
                 GroupId = selectedGroup.Group.GroupID
 
             };

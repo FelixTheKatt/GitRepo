@@ -96,7 +96,7 @@
                                                         <Image Source="/Agenda;component/Resources/SweetImage/cross.png" Height="25" Width="25"/>
                                                     </Button>
                                                     <Border  BorderBrush="{Binding GroupColorAVM}" BorderThickness="1" >
-                                                        <Label MouseDoubleClick="Label_MouseDoubleClick"  Content="{Binding Name}" Width="auto"></Label>
+                                                        <Label MouseDoubleClick="Label_MouseDoubleClick"  Content="{Binding Name}" FontStyle="{Binding FontStyle}" Width="auto"></Label>
                                                     </Border>
                                                 </DockPanel>
                                             </StackPanel>

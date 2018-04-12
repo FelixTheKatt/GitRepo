@@ -34,6 +34,7 @@ namespace Dal.Repository
             result.Name = (string)Data["Name"];
             result.Date = (DateTime)Data["Date"];
             result.GroupId = (int)(Data["GroupId"]);
+            result.PublisherId = (int)Data["PublisherId"];
 
             if (Data["Time"] == DBNull.Value)
                 result.Time = new DateTime?();
@@ -51,7 +52,7 @@ namespace Dal.Repository
 
         public override int Insert(Event Entity)
         {
-            Command cmd = new Command($"INSERT INTO {NameTable} (Name,Date,Time,GroupId) OUTPUT inserted.{IdTable} VALUES (@Name, @Date, @Time, @GroupId);");
+            Command cmd = new Command($"INSERT INTO {NameTable} (Name,Date,Time,GroupId, PublisherId) OUTPUT inserted.{IdTable} VALUES (@Name, @Date, @Time, @GroupId, @PublisherId);");
             
             if (Entity.Time == null)
             {
@@ -63,6 +64,7 @@ namespace Dal.Repository
             cmd.AddParameter("Name", Entity.Name);
             cmd.AddParameter("Date", Entity.Date);
             cmd.AddParameter("GroupId", Entity.GroupId);
+            cmd.AddParameter("PublisherId", Entity.PublisherId);
 
 
 

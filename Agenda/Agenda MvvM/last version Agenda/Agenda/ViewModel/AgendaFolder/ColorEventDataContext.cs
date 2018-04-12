@@ -32,6 +32,16 @@ namespace Agenda.ViewModel.AgendaFolder
                 return new SolidColorBrush(CustomColors.FromString(group.RGBAColor));
             }
         }
+        public string FontStyle
+        {
+            get
+            {
+                if (EventView.PublisherId == SessionFolder.SessionManager.CurrentUser.UserId)
+                    return "Normal";
+                else
+                    return "Italic";
+            }
+        }
         public ColorEventDataContext DataContext
         {
             get { return this; }

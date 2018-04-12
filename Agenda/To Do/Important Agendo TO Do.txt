@@ -1,0 +1,15 @@
+To DO
+
+Lire attentivement CA
+https://stackoverflow.com/questions/2643545/wpf-mvvm-how-to-bind-gridviewcolumn-to-viewmodel-collection
+
+implementer GridViewColumns
+
+commenter + debugger pour comprendre
+
+le tester avec User Group.
+
+/!\ Check memory
+
+-AgendaCollection Friends.
+-Double Click sinon button ezpz.

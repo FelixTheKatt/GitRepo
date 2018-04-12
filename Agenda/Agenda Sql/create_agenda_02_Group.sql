@@ -59,7 +59,8 @@ create table [Event]
 	[Name] nvarchar(100) not null,
 	[Date] Date not null,
 	[Time] time,
-	[GroupId] int constraint Fk_Event_Group references [Group]([GroupId])
+	[GroupId] int constraint Fk_Event_Group references [Group]([GroupId]),
+	[PublisherId] int constraint Fk_EventUser references [User]([UserId])
 )
 create table [Froup]
 (
