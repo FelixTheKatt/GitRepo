@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="wpf\CommandBase.cs" />
+    <Compile Include="wpf\GridViewColumns.cs" />
     <Compile Include="wpf\PasswordHasher.cs" />
     <Compile Include="wpf\ViewModelBase.cs" />
     <Compile Include="wpf\ViewModelCollectionBase.cs" />
