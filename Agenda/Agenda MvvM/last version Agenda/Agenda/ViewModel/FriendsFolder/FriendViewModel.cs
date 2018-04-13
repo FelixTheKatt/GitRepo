@@ -45,11 +45,13 @@ namespace Agenda.ViewModel.FriendsFolder
         public void SetGroupToColumns()
         {
             int agendaId = AgendaRepo.Instance.GetAll().Where(x => x.UserId == SessionManager.CurrentUser.UserId).FirstOrDefault().AgendaId;
-            List<Group> listGroup = GroupRepo.Instance.GetAll().Where(x => x.AgendaId == agendaId).ToList();
+            List<Group> AllowGroup = GroupRepo.Instance.GetAll().Where(x => x.AgendaId == agendaId).ToList();
+
+            RaisePropertyChanged(nameof(AllowGroup));
 
             ObservableCollection<Group> Columns = new ObservableCollection<Group>();
 
-            listGroup.ForEach(x => Columns.Add(x));
+            AllowGroup.ForEach(x => Columns.Add(x));
 
         }
 
