@@ -211,7 +211,7 @@ namespace ToolboxMvvm.wpf
             }
             return column;
         }
-
+        // property info from system.reflection
         private static object GetPropertyValue(object obj, string propertyName)
         {
             if (obj != null)

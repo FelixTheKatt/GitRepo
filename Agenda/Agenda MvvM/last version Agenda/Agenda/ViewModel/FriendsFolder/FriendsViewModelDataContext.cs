@@ -3,6 +3,7 @@ using Dal.Model;
 using Dal.Repository;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -56,9 +57,9 @@ namespace Agenda.ViewModel.FriendsFolder
                 //Shouldn't get here
                 return Visibility.Collapsed;
             }
-        } 
+        }
         #endregion
-
+        
         private bool isSearched;
 
         public bool IsSearched
@@ -103,9 +104,12 @@ namespace Agenda.ViewModel.FriendsFolder
             this.User = u;
             this.isSearched = isSearched;
             Fvm = fvm;
+           
         }
+       
 
         public FriendsViewModelDataContext DataContext { get => this; }
+
 
         public UserClient User { get; set; }
 

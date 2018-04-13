@@ -1,4 +1,5 @@
 ﻿using Agenda.Utils.Enums;
+using Agenda.ViewModel.SessionFolder;
 using Dal.Client.Model;
 using Dal.Client.Service;
 using Dal.Model;
@@ -28,6 +29,40 @@ namespace Agenda.ViewModel.FriendsFolder
             }
         }
         #endregion
+
+        private List<Group> allowGroup;
+
+        public List<Group> AllowGroup
+        {
+            get { return allowGroup; }
+            set
+            {
+                allowGroup = value;
+                RaisePropertyChanged(nameof(AllowGroup));
+            }
+        }
+
+        public void SetGroupToColumns()
+        {
+            int agendaId = AgendaRepo.Instance.GetAll().Where(x => x.UserId == SessionManager.CurrentUser.UserId).FirstOrDefault().AgendaId;
+            List<Group> listGroup = GroupRepo.Instance.GetAll().Where(x => x.AgendaId == agendaId).ToList();
+
+            ObservableCollection<Group> setColumns = new ObservableCollection<Group>();
+
+            listGroup.ForEach(x => setColumns.Add(new Group(GroupRepo.Instance.GetOne(x.GroupID))));
+
+        }
+
+        public FriendViewModel()
+        {
+            this.Columns = new ObservableCollection<Group>();
+
+            Columns.Add
+                (
+                )
+        }
+
+        public ObservableCollection<Group> Columns { get; private set; }
 
         private EventHandler showInviteHandler;
 
