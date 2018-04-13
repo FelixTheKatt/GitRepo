@@ -47,19 +47,15 @@ namespace Agenda.ViewModel.FriendsFolder
             int agendaId = AgendaRepo.Instance.GetAll().Where(x => x.UserId == SessionManager.CurrentUser.UserId).FirstOrDefault().AgendaId;
             List<Group> listGroup = GroupRepo.Instance.GetAll().Where(x => x.AgendaId == agendaId).ToList();
 
-            ObservableCollection<Group> setColumns = new ObservableCollection<Group>();
+            ObservableCollection<Group> Columns = new ObservableCollection<Group>();
 
-            listGroup.ForEach(x => setColumns.Add(new Group(GroupRepo.Instance.GetOne(x.GroupID))));
+            listGroup.ForEach(x => Columns.Add(x));
 
         }
 
         public FriendViewModel()
         {
-            this.Columns = new ObservableCollection<Group>();
-
-            Columns.Add
-                (
-                )
+            SetGroupToColumns();
         }
 
         public ObservableCollection<Group> Columns { get; private set; }
